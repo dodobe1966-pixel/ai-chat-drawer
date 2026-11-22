@@ -8,21 +8,18 @@ A free app that gathers your ChatGPT, Claude, Claude Code, Codex and Gemini chat
 
 ## 받기 · Download (v1.1)
 
-| | 한국어 | English |
-|---|---|---|
-| **Windows** 10 · 11 | [Windows 한국어판](https://github.com/dodobe1966-pixel/ai-chat-drawer/releases/download/v1.1/AI-Chat-Drawer_Windows_ko_v1.1.zip) | [Windows (English)](https://github.com/dodobe1966-pixel/ai-chat-drawer/releases/download/v1.1/AI-Chat-Drawer_Windows_en_v1.1.zip) |
-| **Mac** macOS 12+ | [Mac 한국어판](https://github.com/dodobe1966-pixel/ai-chat-drawer/releases/download/v1.1/AI-Chat-Drawer_Mac_ko_v1.1.zip) | [Mac (English)](https://github.com/dodobe1966-pixel/ai-chat-drawer/releases/download/v1.1/AI-Chat-Drawer_Mac_en_v1.1.zip) |
-| **iPhone** iOS 16.4+ | [아이폰 앱 열기 (Safari)](https://dodobe1966-pixel.github.io/ai-chat-drawer/iphone/) | [Open on iPhone (Safari)](https://dodobe1966-pixel.github.io/ai-chat-drawer/iphone-en/) |
-| **Android** | [안드로이드 앱 열기 (Chrome)](https://dodobe1966-pixel.github.io/ai-chat-drawer/phone/) | [Open on Android (Chrome)](https://dodobe1966-pixel.github.io/ai-chat-drawer/phone-en/) |
+**[무료 받기 페이지 (한국어)](https://dodobe1966-pixel.github.io/ai-chat-drawer/download/)** · **[Download page (English)](https://dodobe1966-pixel.github.io/ai-chat-drawer/download-en/)**
+
+받기 페이지에서 유튜브 채널 「AI 대화서랍」을 구독하면 Windows · Mac · 아이폰 · 안드로이드 받기 단추가 열립니다. 새 판이 나오면 채널 영상으로 알려 드립니다.
+
+On the download page, subscribe to the "AI 대화서랍 / AI Chat Drawer" YouTube channel to unlock the Windows, Mac, iPhone and Android downloads. New versions are announced on the channel.
 
 휴대폰판은 따로 받을 파일 없이 주소를 열어 홈 화면에 설치합니다. 대화는 그 폰 안에만 저장됩니다. · The phone version installs from the link to your home screen, no file to download. Chats stay on that phone.
 
-- **아이폰** — 위 주소를 **Safari** 로 열고(카카오톡 등 다른 앱 안에서 열렸다면 「Safari 로 열기」), 아래 가운데 **공유** 단추 → **홈 화면에 추가** → **추가**.
-- **안드로이드** — 위 주소를 **Chrome** 으로 열고 오른쪽 위 메뉴 **⋮** → **앱 설치**(없으면 홈 화면에 추가).
+- **아이폰** — 받기 페이지의 아이폰 주소를 **Safari** 로 열고(카카오톡 등 다른 앱 안에서 열렸다면 「Safari 로 열기」), 아래 가운데 **공유** 단추 → **홈 화면에 추가** → **추가**.
+- **안드로이드** — 받기 페이지의 안드로이드 주소를 **Chrome** 으로 열고 오른쪽 위 메뉴 **⋮** → **앱 설치**(없으면 홈 화면에 추가).
 - **iPhone** — Open the link in **Safari**, tap **Share** → **Add to Home Screen** → **Add**.
 - **Android** — Open the link in **Chrome**, tap **⋮** → **Install app** (or Add to Home screen).
-
-모든 판은 [Releases](https://github.com/dodobe1966-pixel/ai-chat-drawer/releases) 에 있습니다. · All versions are on the [Releases](https://github.com/dodobe1966-pixel/ai-chat-drawer/releases) page.
 
 ## 시작하기
 

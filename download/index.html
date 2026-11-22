@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 대화서랍 받기</title>
+<link rel="icon" href="../logo.png">
+<style>
+:root{--ink:#1d1b2e;--sub:#5d5a72;--line:#e4e2ee;--brand:#493ac5;--bg:#f7f6fb;--card:#fff;--red:#e62117}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,"Segoe UI","Malgun Gothic","Apple SD Gothic Neo",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+main{max-width:620px;margin:0 auto;padding:36px 16px 60px}
+header{text-align:center}
+header img{width:76px;height:76px;border-radius:18px}
+h1{font-size:26px;margin:14px 0 6px}
+.lead{color:var(--sub);margin:0 0 26px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;margin:14px 0}
+h2{font-size:18px;margin:0 0 6px}
+.desc{color:var(--sub);font-size:14px;margin:0 0 14px}
+.sub{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;border:0;border-radius:12px;padding:14px;font-size:17px;font-weight:700;background:var(--red);color:#fff;cursor:pointer}
+.sub svg{width:22px;height:22px}
+.ghost{display:block;margin:10px auto 0;background:none;border:0;color:var(--sub);font-size:13px;text-decoration:underline;cursor:pointer}
+.locked .row{opacity:.35;pointer-events:none;filter:grayscale(1)}
+.lockmsg{font-size:14px;color:var(--brand);margin:0 0 10px;font-weight:600}
+.ok{display:none;font-size:14px;color:#137333;font-weight:600;margin:0 0 10px}
+.open .ok{display:block} .open .lockmsg{display:none}
+.row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 4px;border-top:1px solid var(--line)}
+.row b{font-size:15px}
+.row a{flex:none;text-decoration:none;background:var(--brand);color:#fff;border-radius:10px;padding:9px 14px;font-weight:700;font-size:14px}
+.row.mine{background:#f1efff;border-radius:10px;border-top:0;padding:12px 10px}
+.howto{font-size:13px;color:var(--sub);margin:12px 0 0}
+footer{text-align:center;font-size:13px;color:var(--sub);margin-top:24px}
+footer a{color:var(--sub)}
+</style>
+</head>
+<body>
+<main>
+<header><img src="../logo.png" alt=""><h1>AI 대화서랍 무료 받기</h1><p class="lead">ChatGPT · Claude · Gemini 대화를 한곳에 모아 날짜와 프로젝트로 다시 찾는 무료 앱입니다.</p></header>
+<section class="card">
+<h2>1. 유튜브 채널 구독하기</h2>
+<p class="desc">단추를 누르면 유튜브 창이 열립니다. 거기서 「구독」을 눌러 주세요. 새 판이 나오면 영상으로 알려 드립니다.</p>
+<button class="sub" id="sub"><svg viewBox="0 0 24 24" fill="#fff"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15V9l5.2 3z"/></svg>유튜브에서 구독하기</button>
+<button class="ghost" id="already">이미 구독했어요</button>
+</section>
+<section class="card locked" id="dl">
+<h2>2. 내 기기에 맞는 판 받기</h2>
+<p class="lockmsg">위의 구독 단추를 누르면 받기 단추가 열립니다.</p>
+<p class="ok">구독 고맙습니다. 받기 단추가 열렸습니다.</p>
+<div id="rows">
+<div class="row" data-os="win"><b>Windows 10 · 11</b><a href="https://github.com/dodobe1966-pixel/ai-chat-drawer/releases/download/v1.1/AI-Chat-Drawer_Windows_ko_v1.1.zip">ZIP 받기</a></div>
+<div class="row" data-os="mac"><b>Mac (macOS 12 이상)</b><a href="https://github.com/dodobe1966-pixel/ai-chat-drawer/releases/download/v1.1/AI-Chat-Drawer_Mac_ko_v1.1.zip">ZIP 받기</a></div>
+<div class="row" data-os="ios"><b>아이폰 (Safari 로 열기)</b><a href="../iphone/">열기</a></div>
+<div class="row" data-os="android"><b>안드로이드 (Chrome 으로 열기)</b><a href="../phone/">열기</a></div>
+</div>
+<p class="howto">받은 뒤: Windows 는 압축을 모두 풀고 「실행.bat」, Mac 은 「AI대화서랍_시작.command」 를 더블클릭. 휴대폰은 주소를 열고 홈 화면에 추가.</p>
+</section>
+<footer><a href="../download-en/">English</a> · <a href="https://github.com/dodobe1966-pixel/ai-chat-drawer/blob/main/TERMS_ko.txt">사용 조건</a> · theblue2015@hanmail.net</footer>
+</main>
+<script>
+(function(){
+  var KEY='acd-subscribed', dl=document.getElementById('dl');
+  function unlock(){dl.classList.remove('locked');dl.classList.add('open');try{localStorage.setItem(KEY,'1')}catch(e){}}
+  try{if(localStorage.getItem(KEY)==='1')unlock()}catch(e){}
+  document.getElementById('sub').onclick=function(){window.open('https://www.youtube.com/@aichatdrawer?sub_confirmation=1','_blank','noopener');setTimeout(unlock,1500)};
+  document.getElementById('already').onclick=unlock;
+  var ua=navigator.userAgent;
+  var os=/iPhone|iPad|iPod/.test(ua)?'ios':/Android/.test(ua)?'android':/Mac/.test(ua)?'mac':/Win/.test(ua)?'win':'';
+  var rows=document.getElementById('rows'), r=os&&rows.querySelector('[data-os="'+os+'"]');
+  if(r){r.classList.add('mine');rows.insertBefore(r,rows.firstChild)}
+})();
+</script>
+</body>
+</html>
