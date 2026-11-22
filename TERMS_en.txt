@@ -1,0 +1,71 @@
+﻿AI Chat Drawer - Terms of Use
+=============================
+Author (rights holder): Kim Kyung-soo
+Applies to: Free edition 1.0 (2026)
+
+By installing or using this program, you agree to the terms below.
+If you do not agree, do not install it. If you have already installed it, please delete it.
+
+
+1. The author keeps all rights
+   - Copyright and all other rights in this program (including its screens, text, images, icons, code and documentation) belong to Kim Kyung-soo.
+   - These terms only give you permission to use the program. They do not transfer or sell any rights to you.
+   - Even though the code can be viewed, this program is not open source.
+
+2. Free use
+   - Individuals, households, schools and non-profit organizations may use it free of charge.
+   - Work use at companies, shops and government offices is also free in this version (1.0).
+   - Using it for free does not create any obligation to pay later.
+
+3. Sharing (redistribution)
+   - You may pass on the ZIP file you received to others, but only unmodified and only free of charge.
+   - You must not remove or delete this TERMS.txt file or the author credit (Kim Kyung-soo).
+   - When posting it on a blog, online community or similar site, please credit the author (Kim Kyung-soo) and name the place you originally got it from.
+   - You must not sell it bundled with other programs, or make downloading it depend on payment, sign-up or watching ads.
+
+4. Modifying
+   - You may modify it for your own personal use on your own PC.
+   - To share or publish a modified version, you must first get the author's permission.
+
+5. What you must not do
+   - Sell this program or a modified version of it, or rent it out for money
+   - Include it in paid products, paid services or paid course materials to earn money
+   - Rename it or remove the author credit and present it as your own work
+   - Use the name "AI Chat Drawer", its icon or the name Kim Kyung-soo to make something look like an official version
+   - Build and sell another program that does the same job based on this program
+
+6. Using it to make money (commercial license)
+   - Any use covered by section 5 (selling, paid services, bundled sales, distributing modified versions, etc.)
+     is allowed only under separate terms agreed with the author (which may include a paid license).
+   - Only permission given in writing (email or document) is valid.
+
+7. No warranty
+   - The program is provided as is. There is no promise that it will run without errors on every PC.
+   - To the extent permitted by law, the author is not liable for any loss of records or other damage arising from its use.
+     This does not apply to damage caused by the author's intent or gross negligence.
+   - Please keep important chats safe separately using "Backup export".
+
+8. Privacy
+   - Chat records are stored only on the user's own PC and are never sent to the author.
+   - The program does not collect personal information such as names or contact details.
+
+9. Other AI services
+   - ChatGPT, Claude, Gemini and similar names are trademarks of their respective companies. This program is not affiliated with those companies.
+   - Following the terms of service of each AI service is the user's own responsibility.
+
+10. Feedback and suggestions
+   - The author may freely use any feedback, suggestions or bug reports you send to improve the program,
+     without paying you for them.
+
+11. Changes to these terms
+   - The author may change these terms starting with a later version (including releasing a separate paid version).
+   - A version you have already received stays under the terms that applied when you received it.
+
+12. Breaking these terms
+   - If you break these terms, your permission to use the program ends immediately, and you must delete the program and all copies of it.
+   - If your breach causes damage to the author, you must compensate the author for that damage.
+
+13. Governing law
+   - These terms are governed by the laws of the Republic of Korea. Any dispute will be settled in the courts of the Republic of Korea.
+
+Questions and permission requests: the author, Kim Kyung-soo (email: theblue2015@hanmail.net)
