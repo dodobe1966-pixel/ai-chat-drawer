@@ -12,10 +12,15 @@ A free app that gathers your ChatGPT, Claude, Claude Code, Codex and Gemini chat
 |---|---|---|
 | **Windows** 10 · 11 | [Windows 한국어판](https://github.com/dodobe1966-pixel/ai-chat-drawer/releases/download/v1.1/AI-Chat-Drawer_Windows_ko_v1.1.zip) | [Windows (English)](https://github.com/dodobe1966-pixel/ai-chat-drawer/releases/download/v1.1/AI-Chat-Drawer_Windows_en_v1.1.zip) |
 | **Mac** macOS 12+ | [Mac 한국어판](https://github.com/dodobe1966-pixel/ai-chat-drawer/releases/download/v1.1/AI-Chat-Drawer_Mac_ko_v1.1.zip) | [Mac (English)](https://github.com/dodobe1966-pixel/ai-chat-drawer/releases/download/v1.1/AI-Chat-Drawer_Mac_en_v1.1.zip) |
+| **iPhone** iOS 16.4+ | [아이폰 앱 열기 (Safari)](https://dodobe1966-pixel.github.io/ai-chat-drawer/iphone/) | [Open on iPhone (Safari)](https://dodobe1966-pixel.github.io/ai-chat-drawer/iphone-en/) |
+| **Android** | [안드로이드 앱 열기 (Chrome)](https://dodobe1966-pixel.github.io/ai-chat-drawer/phone/) | [Open on Android (Chrome)](https://dodobe1966-pixel.github.io/ai-chat-drawer/phone-en/) |
 
-| **iPhone · Android** | [휴대폰 앱 열기](https://dodobe1966-pixel.github.io/ai-chat-drawer/phone/) | [Open the phone app](https://dodobe1966-pixel.github.io/ai-chat-drawer/phone-en/) |
+휴대폰판은 따로 받을 파일 없이 주소를 열어 홈 화면에 설치합니다. 대화는 그 폰 안에만 저장됩니다. · The phone version installs from the link to your home screen, no file to download. Chats stay on that phone.
 
-휴대폰은 위 주소를 아이폰은 Safari, 안드로이드는 Chrome 으로 열고 「홈 화면에 추가」(안드로이드는 메뉴 ⋮ → 앱 설치)를 누르면 앱처럼 설치됩니다. · On phones, open the link in Safari (iPhone) or Chrome (Android) and choose Add to Home Screen / Install app.
+- **아이폰** — 위 주소를 **Safari** 로 열고(카카오톡 등 다른 앱 안에서 열렸다면 「Safari 로 열기」), 아래 가운데 **공유** 단추 → **홈 화면에 추가** → **추가**.
+- **안드로이드** — 위 주소를 **Chrome** 으로 열고 오른쪽 위 메뉴 **⋮** → **앱 설치**(없으면 홈 화면에 추가).
+- **iPhone** — Open the link in **Safari**, tap **Share** → **Add to Home Screen** → **Add**.
+- **Android** — Open the link in **Chrome**, tap **⋮** → **Install app** (or Add to Home screen).
 
 모든 판은 [Releases](https://github.com/dodobe1966-pixel/ai-chat-drawer/releases) 에 있습니다. · All versions are on the [Releases](https://github.com/dodobe1966-pixel/ai-chat-drawer/releases) page.
 
