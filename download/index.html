@@ -46,9 +46,7 @@ footer a{color:var(--sub)}
 <div id="acts">
 <button class="sub" id="sub"><svg viewBox="0 0 24 24" fill="#fff"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15V9l5.2 3z"/></svg>① 채널 구독하기</button>
 <button class="sub like" id="like"><svg viewBox="0 0 24 24" fill="#e62117"><path d="M2 21h4V9H2v12zm20-11a2 2 0 0 0-2-2h-6.3l1-4.6v-.3a1.5 1.5 0 0 0-.4-1L13.2 1 6.6 7.6A2 2 0 0 0 6 9v10a2 2 0 0 0 2 2h9a2 2 0 0 0 1.8-1.2l3-7.1c.1-.2.2-.5.2-.7v-2z"/></svg>② 영상에 좋아요 누르기</button>
-</div>
-<button class="ghost" id="already">이미 구독과 좋아요를 눌렀어요</button>
-</section>
+</div></section>
 <section class="card locked" id="dl">
 <h2>2. 내 기기에 맞는 판 받기</h2>
 <p class="lockmsg">위의 구독과 좋아요 단추를 누르면 받기 단추가 열립니다.</p>
@@ -70,9 +68,7 @@ footer a{color:var(--sub)}
   try{if(localStorage.getItem(KEY)==='1')unlock()}catch(e){}
   var did={};
   function step(id,url){var b=document.getElementById(id);b.onclick=function(){window.open(url,'_blank','noopener');b.classList.add('done');did[id]=1;if(did.sub&&did.like)setTimeout(unlock,1500)}}
-  step('sub','https://www.youtube.com/@aichatdrawer?sub_confirmation=1');step('like','https://www.youtube.com/shorts/LjLct7jWhMY');
-  document.getElementById('already').onclick=unlock;
-  var ua=navigator.userAgent;
+  step('sub','https://www.youtube.com/@aichatdrawer?sub_confirmation=1');step('like','https://www.youtube.com/shorts/LjLct7jWhMY');  var ua=navigator.userAgent;
   var os=/iPhone|iPad|iPod/.test(ua)?'ios':/Android/.test(ua)?'android':/Mac/.test(ua)?'mac':/Win/.test(ua)?'win':'';
   var rows=document.getElementById('rows'), r=os&&rows.querySelector('[data-os="'+os+'"]');
   if(r){r.classList.add('mine');rows.insertBefore(r,rows.firstChild)}
