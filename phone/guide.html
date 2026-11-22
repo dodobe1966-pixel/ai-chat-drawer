@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; object-src 'none'; base-uri 'none'; form-action 'self'">
+<meta name="theme-color" content="#493ac5">
+<title>AI 대화서랍 휴대폰 사용법</title>
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<style>
+:root{--ink:#1f2430;--sub:#5b6070;--line:#e2e4ee;--bg:#f4f5fb;--card:#fff;--accent:#493ac5;--accent-soft:#eeebff;--warn:#b8324c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Pretendard,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;font-size:16px;line-height:1.7;word-break:keep-all}
+a{color:var(--accent)}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px calc(48px + env(safe-area-inset-bottom))}
+header{display:flex;align-items:center;gap:14px;padding:22px 0 18px}
+header img{width:54px;height:54px;border-radius:14px;box-shadow:0 4px 12px #49386a33}
+header h1{margin:0;font-size:24px;letter-spacing:-.02em}
+header p{margin:0;color:var(--sub);font-size:14px}
+.back{display:inline-block;margin:6px 0 4px;font-weight:700;text-decoration:none}
+section{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px 18px 14px;margin-bottom:16px}
+h2{margin:0 0 10px;font-size:20px;display:flex;align-items:center;gap:10px}
+h2 .no{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:9px;background:var(--accent);color:#fff;font-size:15px}
+h3{margin:16px 0 6px;font-size:17px}
+ol{margin:6px 0 10px;padding-left:22px}
+li{margin:3px 0}
+.note{background:var(--accent-soft);border-radius:12px;padding:10px 14px;margin:10px 0;font-size:15px}
+.warn{background:#fdecef;color:#6b1a2a}
+details{border:1px solid var(--line);border-radius:12px;padding:8px 12px;margin:8px 0;background:#fcfcff}
+summary{font-weight:800;cursor:pointer}
+small,.sub{color:var(--sub);font-size:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a class="back" href="index.html">&larr; 서랍으로 돌아가기</a>
+<header>
+  <img src="icons/icon-192.png" alt="" width="54" height="54">
+  <div><h1>AI 대화서랍 휴대폰 사용법</h1><p>내 AI 대화를 폰 하나에 모아 보는 법</p></div>
+</header>
+
+<section>
+  <h2><span class="no">1</span>홈 화면에 설치하기</h2>
+  <h3>아이폰 (Safari)</h3>
+  <ol>
+    <li>Safari 로 AI 대화서랍 주소를 열어요. (Chrome 이 아니라 Safari 여야 해요)</li>
+    <li>아래쪽 가운데 <b>공유</b> 단추(네모에서 화살표가 위로 나온 모양)를 눌러요.</li>
+    <li>목록을 내려 <b>홈 화면에 추가</b>를 누르고, 오른쪽 위 <b>추가</b>를 눌러요.</li>
+    <li>홈 화면에 생긴 <b>AI 대화서랍</b> 아이콘으로 열면 앱처럼 전체 화면으로 열려요.</li>
+  </ol>
+  <h3>안드로이드 (Chrome)</h3>
+  <ol>
+    <li>Chrome 으로 AI 대화서랍 주소를 열어요.</li>
+    <li>오른쪽 위 <b>점 세 개 메뉴</b>를 눌러요.</li>
+    <li><b>앱 설치</b>가 보이면 그것을, 없으면 <b>홈 화면에 추가</b>를 눌러요.</li>
+    <li>앱 서랍이나 홈 화면의 <b>AI 대화서랍</b> 아이콘으로 열어요.</li>
+  </ol>
+  <p class="sub">한 번 열어 두면 인터넷이 없어도 열려요. 주소가 https 로 시작해야 설치할 수 있어요.</p>
+</section>
+
+<section>
+  <h2><span class="no">2</span>대화 넣기</h2>
+  <p>오른쪽 위 <b>대화 추가</b>를 누르고 <b>파일 가져오기</b>로 내보낸 파일을 고르면 돼요. 읽은 대화를 보여 주면 확인하고 저장해요. ZIP 은 풀지 않고 그대로 골라도 돼요.</p>
+  <details open><summary>ChatGPT</summary>
+    <ol>
+      <li>ChatGPT 에서 <b>설정 → 데이터 제어 → 데이터 내보내기</b>를 눌러요.</li>
+      <li>메일 속 링크로 ZIP 파일을 받아요. (폰의 <b>파일</b> 앱이나 <b>다운로드</b>에 저장돼요)</li>
+      <li>서랍에서 <b>대화 추가 → 파일 가져오기</b>로 그 ZIP 을 골라요.</li>
+    </ol></details>
+  <details><summary>Claude (claude.ai)</summary>
+    <ol>
+      <li>claude.ai 에서 <b>설정 → 개인정보 보호 → 데이터 내보내기</b>를 눌러요.</li>
+      <li>메일로 온 링크에서 ZIP 파일을 받아요.</li>
+      <li><b>파일 가져오기</b>로 그 ZIP 을 골라요.</li>
+    </ol></details>
+  <details><summary>Gemini</summary>
+    <ol>
+      <li><a href="https://takeout.google.com" target="_blank" rel="noopener">구글 테이크아웃</a>에 들어가요.</li>
+      <li><b>모두 선택 해제</b>를 누르고 <b>내 활동</b>만 체크한 뒤, 그 안에서 <b>Gemini 앱</b>만 남겨요.</li>
+      <li>받은 ZIP 을 <b>파일 가져오기</b>로 그대로 골라요.</li>
+    </ol></details>
+  <details><summary>그 밖의 AI · 복사한 글</summary>
+    <ol>
+      <li>대화 화면에서 글을 길게 눌러 복사해요.</li>
+      <li><b>대화 추가 → 대화 붙여넣기</b>에 붙여 넣고 제목을 적어 저장해요.</li>
+      <li>JSON · JSONL · TXT · MD · HTML 파일도 <b>파일 가져오기</b>로 읽어요.</li>
+    </ol></details>
+  <p class="sub">메일이 오기까지 몇 분에서 하루가 걸릴 수 있어요. 서비스가 바뀌면 메뉴 이름이 조금 다를 수 있어요.</p>
+</section>
+
+<section>
+  <h2><span class="no">3</span>집 PC 와 연동하기</h2>
+  <p>PC 판 AI 대화서랍과 폰을 이어 두면 PC 에 모인 대화가 폰에 오고, 폰에서 넣거나 고친 대화도 PC 로 가요. 방법은 두 가지예요.</p>
+  <h3>방법 1. 자동으로 맞추기 (PC 에 바깥 주소를 이어 둔 경우)</h3>
+  <ol>
+    <li>PC 판 AI 대화서랍을 켜 둬요. PC 가 켜져 있어야 맞출 수 있어요.</li>
+    <li>폰 브라우저에서 <b>PC 바깥 주소 뒤에 /phone/</b> 을 붙여 열어요. (예: <b>https://내주소/phone/</b>)</li>
+    <li>입장 암호를 한 번 넣어요. 암호는 PC 판 폴더의 <b>입장암호.txt</b> 에 있어요. 한 번 넣으면 30일 동안 다시 묻지 않아요.</li>
+    <li>그 화면을 1번 방법대로 <b>홈 화면에 추가</b>해요. 이제 이 아이콘이 집 PC 와 이어진 서랍이에요.</li>
+    <li>앱을 열 때마다 저절로 맞춰져요. 바로 맞추고 싶으면 왼쪽 메뉴 아래 <b>PC와 맞추기</b>를 눌러요.</li>
+  </ol>
+  <div class="note"><b>무엇이 맞춰지나요?</b> 폰에서 새로 넣은 대화, 고친 제목·프로젝트·즐겨찾기, 지운 대화(PC 휴지통에 3일 남아요)가 PC 로 가고, PC 에 모인 대화는 모두 폰으로 와요. PC 가 꺼져 있을 때는 폰에 있는 대화로 그대로 보이고, 다음에 PC 가 켜지면 맞춰져요.</div>
+  <p class="sub">Mac 이나 다른 컴퓨터에서도 같은 주소를 Safari·Chrome 으로 열면 같은 서랍을 써요. Mac Safari 는 <b>파일 → Dock 에 추가</b>로 앱처럼 둘 수 있어요.</p>
+  <p class="sub">바깥 주소는 PC 판 폴더에 <b>바깥주소.txt</b> 를 만들고 HTTPS 주소(Cloudflare 터널 같은)를 한 줄 적으면 열려요. 주소가 없으면 방법 2 를 쓰세요.</p>
+  <h3>방법 2. 백업 파일로 옮기기 (어디서나)</h3>
+  <ol>
+    <li>PC 판에서 <b>내 PC 대화 찾기</b>로 대화를 모은 뒤 왼쪽 아래 <b>백업 내보내기</b>로 <b>AI 대화서랍 날짜.json</b> 파일을 받아요.</li>
+    <li>그 파일을 폰으로 보내요. (메일, 카카오톡 나에게 보내기, 구글 드라이브, 아이클라우드 등)</li>
+    <li>폰 서랍에서 <b>대화 추가 → 파일 가져오기</b>로 그 파일을 골라요. 같은 대화는 두 번 들어가지 않아요.</li>
+    <li>거꾸로 폰 대화를 PC 로 보낼 때는 폰에서 <b>백업 내보내기</b> → PC 판 <b>대화 추가 → 파일 가져오기</b>예요.</li>
+  </ol>
+</section>
+
+<section>
+  <h2><span class="no">4</span>이 폰에만 저장돼요 · 백업하세요</h2>
+  <div class="note warn"><b>대화는 이 폰의 브라우저 안에만 저장돼요.</b> 집 PC 와 연동하지 않으면 어느 곳으로도 보내지 않아요. 그래서 폰을 바꾸거나, 앱을 지우거나, 브라우저 기록·사이트 데이터를 지우면 대화도 함께 사라져요. 아이폰은 오래 열지 않으면 브라우저가 저장 공간을 비울 수도 있어요.</div>
+  <ol>
+    <li>대화를 넣은 날에는 왼쪽 메뉴의 <b>백업 내보내기</b>를 눌러 파일 하나를 받아 두세요.</li>
+    <li>받은 파일은 폰의 <b>파일</b> 앱, 구글 드라이브, 아이클라우드처럼 폰 밖에도 남는 곳에 옮겨 두세요.</li>
+    <li>되돌릴 때는 <b>파일 가져오기</b>로 그 백업 파일을 고르면 돼요.</li>
+  </ol>
+  <p class="sub">지운 대화는 3일 동안 휴지통에서 되살릴 수 있어요.</p>
+</section>
+
+<section>
+  <h2><span class="no">5</span>이럴 땐 이렇게</h2>
+  <details><summary>아이폰에서 홈 화면에 추가가 안 보여요</summary><p>Safari 로 열었는지 보세요. 다른 앱 안의 브라우저(카카오톡 링크 등)에서는 안 보여요. 오른쪽 아래 <b>Safari 로 열기</b>를 먼저 눌러요.</p></details>
+  <details><summary>파일을 골랐는데 대화가 없다고 나와요</summary><p>대화가 든 내보내기 파일인지 보세요. ChatGPT 는 <b>conversations.json</b> 이 든 ZIP, Gemini 는 <b>내 활동</b> ZIP 이에요. 아주 큰 ZIP 은 폰 메모리가 모자랄 수 있어요. 그럴 땐 PC 판에서 넣고 백업 파일로 옮겨 오세요.</p></details>
+  <details><summary>폰을 바꿨어요</summary><p>예전 폰에서 <b>백업 내보내기</b>를 받아 새 폰에서 <b>파일 가져오기</b>로 넣으면 돼요.</p></details>
+</section>
+</div>
+</body>
+</html>

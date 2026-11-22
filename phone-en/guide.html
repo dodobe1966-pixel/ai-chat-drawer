@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; object-src 'none'; base-uri 'none'; form-action 'self'">
+<meta name="theme-color" content="#493ac5">
+<title>AI Chat Drawer on your phone</title>
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<style>
+:root{--ink:#1f2430;--sub:#5b6070;--line:#e2e4ee;--bg:#f4f5fb;--card:#fff;--accent:#493ac5;--accent-soft:#eeebff;--warn:#b8324c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Pretendard,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.65}
+a{color:var(--accent)}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px calc(48px + env(safe-area-inset-bottom))}
+header{display:flex;align-items:center;gap:14px;padding:22px 0 18px}
+header img{width:54px;height:54px;border-radius:14px;box-shadow:0 4px 12px #49386a33}
+header h1{margin:0;font-size:24px;letter-spacing:-.02em}
+header p{margin:0;color:var(--sub);font-size:14px}
+.back{display:inline-block;margin:6px 0 4px;font-weight:700;text-decoration:none}
+section{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px 18px 14px;margin-bottom:16px}
+h2{margin:0 0 10px;font-size:20px;display:flex;align-items:center;gap:10px}
+h2 .no{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:9px;background:var(--accent);color:#fff;font-size:15px}
+h3{margin:16px 0 6px;font-size:17px}
+ol{margin:6px 0 10px;padding-left:22px}
+li{margin:3px 0}
+.note{background:var(--accent-soft);border-radius:12px;padding:10px 14px;margin:10px 0;font-size:15px}
+.warn{background:#fdecef;color:#6b1a2a}
+details{border:1px solid var(--line);border-radius:12px;padding:8px 12px;margin:8px 0;background:#fcfcff}
+summary{font-weight:800;cursor:pointer}
+small,.sub{color:var(--sub);font-size:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a class="back" href="index.html">&larr; Back to the drawer</a>
+<header>
+  <img src="icons/icon-192.png" alt="" width="54" height="54">
+  <div><h1>AI Chat Drawer on your phone</h1><p>Keep your AI chats together on one phone</p></div>
+</header>
+
+<section>
+  <h2><span class="no">1</span>Add it to your home screen</h2>
+  <h3>iPhone (Safari)</h3>
+  <ol>
+    <li>Open the AI Chat Drawer address in Safari. (It has to be Safari, not Chrome.)</li>
+    <li>Tap the <b>Share</b> button (a square with an arrow pointing up) at the bottom.</li>
+    <li>Scroll down, tap <b>Add to Home Screen</b>, then tap <b>Add</b> at the top right.</li>
+    <li>Open it from the new <b>AI Chat Drawer</b> icon and it runs full screen like an app.</li>
+  </ol>
+  <h3>Android (Chrome)</h3>
+  <ol>
+    <li>Open the AI Chat Drawer address in Chrome.</li>
+    <li>Tap the <b>three-dot menu</b> at the top right.</li>
+    <li>Tap <b>Install app</b>, or <b>Add to Home screen</b> if you don't see it.</li>
+    <li>Open it from the <b>AI Chat Drawer</b> icon on your home screen or app drawer.</li>
+  </ol>
+  <p class="sub">Once opened, it also works without internet. The address has to start with https to install.</p>
+</section>
+
+<section>
+  <h2><span class="no">2</span>Adding chats</h2>
+  <p>Tap <b>Add chat</b> at the top right, then <b>Import file</b>, and choose an exported file. Check the chats it found, then save. You can choose a ZIP as it is, without unzipping.</p>
+  <details open><summary>ChatGPT</summary>
+    <ol>
+      <li>In ChatGPT, go to <b>Settings → Data controls → Export data</b>.</li>
+      <li>Download the ZIP from the link in the email. (It goes to the <b>Files</b> app or <b>Downloads</b>.)</li>
+      <li>In the drawer, tap <b>Add chat → Import file</b> and choose that ZIP.</li>
+    </ol></details>
+  <details><summary>Claude (claude.ai)</summary>
+    <ol>
+      <li>On claude.ai, go to <b>Settings → Privacy → Export data</b>.</li>
+      <li>Download the ZIP file from the link in the email.</li>
+      <li>Use <b>Import file</b> to choose that ZIP.</li>
+    </ol></details>
+  <details><summary>Gemini</summary>
+    <ol>
+      <li>Go to <a href="https://takeout.google.com" target="_blank" rel="noopener">Google Takeout</a>.</li>
+      <li>Tap <b>Deselect all</b>, tick only <b>My Activity</b>, and inside it keep only <b>Gemini Apps</b>.</li>
+      <li>Choose the ZIP you get with <b>Import file</b>, as it is.</li>
+    </ol></details>
+  <details><summary>Other AIs and copied text</summary>
+    <ol>
+      <li>In the chat, long-press the text and copy it.</li>
+      <li>Paste it into <b>Add chat → Paste a conversation</b>, type a title and save.</li>
+      <li>JSON, JSONL, TXT, MD and HTML files also work with <b>Import file</b>.</li>
+    </ol></details>
+  <p class="sub">The email can take from a few minutes to a day. Menu names may change a little when the services update.</p>
+</section>
+
+<section>
+  <h2><span class="no">3</span>Linking with your home PC</h2>
+  <p>Link the phone with AI Chat Drawer on your PC, and chats gathered on the PC come to the phone while chats you add or edit on the phone go to the PC. There are two ways.</p>
+  <h3>Way 1. Sync automatically (when your PC has an outside address)</h3>
+  <ol>
+    <li>Keep AI Chat Drawer running on the PC. The PC has to be on to sync.</li>
+    <li>On the phone, open <b>the PC’s outside address followed by /phone/</b> (for example <b>https://your-address/phone/</b>).</li>
+    <li>Enter the entry password once. It’s in <b>password.txt</b> in the PC app folder. It won’t ask again for 30 days.</li>
+    <li><b>Add that page to your home screen</b> as in step 1. This icon is now the drawer linked to your home PC.</li>
+    <li>It syncs every time you open the app. To sync right away, tap <b>Sync with PC</b> at the bottom of the left menu.</li>
+  </ol>
+  <div class="note"><b>What gets synced?</b> Chats you add on the phone, edited titles, projects and favorites, and deleted chats (kept 3 days in the PC trash) go to the PC, and every chat on the PC comes to the phone. While the PC is off, the phone shows what it already has and syncs the next time the PC is on.</div>
+  <p class="sub">On a Mac or any other computer, open the same address in Safari or Chrome to use the same drawer. In Mac Safari, <b>File → Add to Dock</b> keeps it like an app.</p>
+  <p class="sub">To open an outside address, create <b>outside_address.txt</b> in the PC app folder and write one HTTPS address on a line (such as a Cloudflare Tunnel). Without one, use way 2.</p>
+  <h3>Way 2. Move a backup file (works anywhere)</h3>
+  <ol>
+    <li>On the PC version, gather chats with <b>Find chats on this PC</b>, then save a file with <b>Export backup</b> at the bottom left.</li>
+    <li>Send that file to your phone (email, a messenger, Google Drive, iCloud and so on).</li>
+    <li>In the phone drawer, choose it with <b>Add chat → Import file</b>. The same chat never goes in twice.</li>
+    <li>To send phone chats to the PC, do the reverse: <b>Export backup</b> on the phone, then <b>Add chat → Import file</b> on the PC.</li>
+  </ol>
+</section>
+
+<section>
+  <h2><span class="no">4</span>Saved on this phone only, so back up</h2>
+  <div class="note warn"><b>Your chats are saved only inside this phone's browser.</b> Unless you link it with your home PC, they are never sent anywhere. If you change phones, remove the app, or clear the browser's history and site data, the chats go too. On iPhone, the browser may also clear storage for sites you haven't opened in a long time.</div>
+  <ol>
+    <li>On days you add chats, tap <b>Export backup</b> in the left menu to save one file.</li>
+    <li>Move that file somewhere that lives outside the phone too, such as Google Drive or iCloud.</li>
+    <li>To bring everything back, choose that backup file with <b>Import file</b>.</li>
+  </ol>
+  <p class="sub">Deleted chats can be restored from the Trash for 3 days.</p>
+</section>
+
+<section>
+  <h2><span class="no">5</span>Troubleshooting</h2>
+  <details><summary>I can't find Add to Home Screen on iPhone</summary><p>Make sure you opened it in Safari. It doesn't show inside other apps' built-in browsers. Tap <b>Open in Safari</b> first.</p></details>
+  <details><summary>It says no chats were found</summary><p>Check that it's an export file with chats in it. For ChatGPT it's the ZIP with <b>conversations.json</b>; for Gemini it's the <b>My Activity</b> ZIP. A very large ZIP can be too much for phone memory. If so, add it on the PC version and bring it over as a backup file.</p></details>
+  <details><summary>I got a new phone</summary><p>Tap <b>Export backup</b> on the old phone and <b>Import file</b> on the new one.</p></details>
+</section>
+</div>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; object-src 'none'; base-uri 'none'; form-action 'self'; worker-src 'self'; manifest-src 'self'">
+  <meta name="theme-color" content="#493ac5">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="AI Chat Drawer">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <title>AI Chat Drawer</title>
+  <link rel="icon" type="image/png" href="assets/app-icon.png">
+  <style>
+    .brand-logo { width: 42px; height: 42px; flex: none; border-radius: 12px; object-fit: cover; box-shadow: 0 3px 8px #6b5a4040; }
+    .logo-intro { position: fixed; inset: 0; z-index: 9999; display: grid; place-content: center; justify-items: center; gap: 18px;
+      background: radial-gradient(circle at 50% 42%, #fbf7f1, #e6ddd1); cursor: pointer; transition: opacity .6s ease, visibility .6s; }
+    .logo-intro img { width: min(240px, 52vw); height: auto; border-radius: 22%; box-shadow: 0 18px 40px #6b5a4033; animation: logo-in .7s ease-out both; }
+    .logo-intro strong { color: #3b3226; font-size: 22px; font-weight: 900; letter-spacing: -.03em; animation: logo-in .7s .15s ease-out both; }
+    .logo-intro.is-done { opacity: 0; visibility: hidden; }
+    @keyframes logo-in { from { opacity: 0; transform: translateY(10px) scale(.96); } to { opacity: 1; transform: none; } }
+  </style>
+  <link rel="stylesheet" href="styles.css?v=rel10">
+  <script src="phone-tables.js?v=86ac2ae5c0" defer></script>
+  <script src="phone-import.js?v=86ac2ae5c0" defer></script>
+  <script src="phone-api.js?v=86ac2ae5c0" defer></script>
+  <script src="phone-sync.js?v=86ac2ae5c0" defer></script>
+  <script src="pwa-boot.js?v=86ac2ae5c0" defer></script>
+  <script src="app.js?v=rel10" defer></script>
+</head>
+<body>
+  <div class="logo-intro" id="logo-intro" aria-hidden="true"><img src="assets/logo-motion.webp" alt=""><strong>AI Chat Drawer</strong></div>
+  <script src="assets/logo-intro.js"></script>
+  <a class="skip-link" href="#records-heading">Skip to chat list</a>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Library menu">
+      <div class="brand">
+        <img class="brand-logo" src="assets/logo-motion.webp" alt="" width="42" height="42">
+        <span class="brand-name">AI Chat Drawer<small>All your chats in one place</small></span>
+        <button type="button" class="icon-button side-close" id="side-close" aria-label="Close menu" title="Close menu" aria-controls="sidebar"><span data-icon="drawer"></span></button>
+      </div>
+      <nav aria-label="Chat types">
+        <p class="side-caption">Library</p>
+        <div id="library-nav"></div>
+        <p class="side-caption">AI services</p>
+        <div id="source-nav"></div>
+      </nav>
+      <div class="service-popover" id="service-popover" role="dialog" aria-label="My AIs" hidden></div>
+      <div class="side-projects">
+        <div class="side-caption-row"><p class="side-caption">Projects</p><button type="button" class="new-project-button" id="new-project"><span data-icon="plus"></span> New project</button></div>
+        <nav id="project-nav" aria-label="Projects"></nav>
+      </div>
+      <div class="side-bottom">
+        <a class="nav-item" href="guide.html" target="_blank" rel="noopener"><span data-icon="info"></span> How to use</a>
+        <button type="button" id="backup-button" class="nav-item"><span data-icon="download"></span> Export backup</button>
+        <button type="button" class="nav-item local-note" id="open-sync"><span data-icon="shield"></span> <span id="sync-note">Saved on this phone only</span></button>
+      </div>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar">
+        <button type="button" class="icon-button mobile-menu" id="mobile-menu" aria-label="Close menu" aria-expanded="false" aria-controls="sidebar"><span data-icon="menu"></span></button>
+        <div class="breadcrumb"><span data-icon="library"></span><span>My library</span></div>
+        <div class="select-bar" id="select-bar" role="region" aria-label="Selected chats" hidden>
+          <span class="select-count" id="select-count">0 selected</span>
+          <button type="button" class="ghost-button" id="select-all">All visible chats</button>
+          <button type="button" class="danger-button" id="select-delete" disabled><span data-icon="trash"></span> Delete</button>
+          <button type="button" class="ghost-button" id="select-cancel">Cancel</button>
+        </div>
+        <div class="top-actions">
+          <label class="search-box"><span data-icon="search"></span><input id="search" type="search" placeholder="Search titles, projects, chat text" aria-label="Search titles, projects, chat text"><kbd aria-hidden="true">Ctrl K</kbd></label>
+          <button type="button" class="secondary-button select-toggle" id="select-toggle" aria-pressed="false"><span data-icon="trash"></span> Bulk delete</button>
+          <button type="button" class="primary-button" id="add-button"><span data-icon="plus"></span> Add chat</button>
+        </div>
+      </header>
+      <div class="workspace-content">
+        <section class="hero" aria-labelledby="main-title">
+          <div class="hero-art" aria-hidden="true"><i class="art-base"></i><i class="art-ghost g1"></i><i class="art-ghost g2"></i><i class="art-flow"></i><i class="art-glow"></i><i class="art-leak"></i><i class="art-scan"></i><i class="art-bar"></i></div>
+          <div class="hero-copy">
+            <h1 id="main-title" class="hero-title">All your AI chats at a glance</h1>
+            <p class="hero-subtitle">Find your ChatGPT, Claude Code and Gemini chats by date and project.</p>
+          </div>
+          <div class="hero-actions">
+            <button type="button" class="primary-button" id="find-file"><span data-icon="upload"></span> Import file</button>
+          </div>
+        </section>
+
+        <div class="demo-banner" id="demo-banner" hidden>
+          <span data-icon="info"></span>
+          <span><strong>Sample conversations</strong> <span id="demo-text">Add a real conversation to see your own history.</span></span>
+          <button class="text-button" type="button" id="toggle-demo">Hide samples</button>
+        </div>
+        <div class="section-head">
+          <div><h2 id="records-heading" tabindex="-1">All conversations</h2><span class="view-count" id="view-count" aria-live="polite"></span></div>
+          <span class="status-text" id="load-status" role="status"></span>
+        </div>
+        <div class="filters">
+          <div class="view-tabs" aria-label="How chats are grouped">
+            <button type="button" class="view-tab is-active" data-view="date" aria-pressed="true"><span data-icon="calendar"></span> By date</button>
+            <button type="button" class="view-tab" data-view="project" aria-pressed="false"><span data-icon="folder"></span> By project</button>
+          </div>
+          <div class="filter-tools">
+            <label class="filter-date"><span data-icon="calendar"></span><span class="date-label" id="date-label">Pick a date</span><input id="date-filter" type="date" aria-label="Filter by date"></label>
+            <button class="icon-button" type="button" id="clear-date" aria-label="Clear date filter" title="Clear date filter" hidden><span data-icon="close"></span></button>
+            <select id="sort-order" class="filter-select" aria-label="Sort order">
+              <option value="new">Newest first</option>
+              <option value="old">Oldest first</option>
+            </select>
+          </div>
+        </div>
+        <div class="timeline" id="timeline"></div>
+        <button type="button" id="show-more" class="secondary-button" hidden>Show more chats</button>
+      </div>
+    </main>
+  </div>
+
+  <dialog id="intake" class="modal" aria-labelledby="intake-title">
+    <div class="modal-inner">
+      <div class="modal-head">
+        <div><h2 id="intake-title">Add chat</h2><p id="intake-subtitle">Choose how to bring them in.</p></div>
+        <button type="button" class="icon-button" data-close="intake" aria-label="Close"><span data-icon="close"></span></button>
+      </div>
+      <div class="modal-body" id="intake-body"></div>
+      <div class="modal-foot" id="intake-foot" hidden></div>
+    </div>
+  </dialog>
+  <dialog id="editor" class="modal" aria-labelledby="editor-title">
+    <form id="entry-form" class="modal-inner">
+      <div class="modal-head">
+        <div><h2 id="editor-title">Paste a conversation</h2></div>
+        <button type="button" class="icon-button" data-close="editor" aria-label="Close"><span data-icon="close"></span></button>
+      </div>
+      <div class="modal-body">
+        <label class="field">Title<input id="entry-title" name="title" placeholder="e.g. Kitchen layout review" required maxlength="240"></label>
+        <div class="field-grid">
+          <label class="field">Projects<input id="entry-project" name="project" list="saved-projects" placeholder="Pick one or type a new name" maxlength="160"></label>
+          <label class="field">Chat date<input id="entry-date" name="date" type="date" required></label>
+        </div>
+        <label class="field">AI services<select id="entry-source" name="source"><option value="chatgpt">ChatGPT</option><option value="claude">Claude Code</option><option value="gemini">Gemini</option><option value="codex">Codex</option><option value="other">Other</option></select></label>
+        <label class="field" id="entry-transcript-field">Full conversation<textarea id="entry-transcript" name="transcript" rows="7" placeholder="Copy your chat with the AI and paste it here."></textarea></label>
+        <label class="field">Card preview <small>optional</small><textarea id="entry-summary" name="summary" rows="2" maxlength="600" placeholder="Leave blank to use the start of the chat."></textarea></label>
+        <label class="field">Original chat link <small>optional</small><input id="entry-link" name="link" type="url" placeholder="https://…"></label>
+        <div class="field">
+          <label for="entry-image">Thumbnail image <small>optional</small></label>
+          <input id="entry-image" type="file" accept="image/png,image/jpeg,image/webp,image/gif">
+          <div class="image-edit" id="image-edit" hidden></div>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <p id="editor-status" class="status-text" role="status"></p>
+        <button type="button" class="secondary-button" data-close="editor">Cancel</button>
+        <button type="submit" class="primary-button">Save</button>
+      </div>
+    </form>
+  </dialog>
+  <dialog id="trash" class="modal detail-modal" aria-labelledby="trash-title">
+    <div class="modal-inner">
+      <div class="modal-head">
+        <div><h2 id="trash-title">Trash</h2><p class="trash-note">You can only restore chats deleted less than 3 days ago. After 3 days they are deleted for good.</p></div>
+        <button type="button" class="icon-button" data-close="trash" aria-label="Close"><span data-icon="close"></span></button>
+      </div>
+      <div class="modal-body" id="trash-body"></div>
+      <div class="modal-foot" id="trash-foot"></div>
+    </div>
+  </dialog>
+  <dialog id="detail" class="modal detail-modal" aria-labelledby="detail-title">
+    <div class="modal-inner">
+      <div class="modal-head">
+        <div><div class="detail-meta" id="detail-meta"></div><h2 id="detail-title">Full conversation</h2></div>
+        <button type="button" class="icon-button" data-close="detail" aria-label="Close"><span data-icon="close"></span></button>
+      </div>
+      <div class="modal-body" id="detail-body"></div>
+      <div class="modal-foot" id="detail-foot"></div>
+    </div>
+  </dialog>
+  <datalist id="saved-projects"></datalist>
+  <dialog id="confirm-delete" class="modal confirm-modal" aria-labelledby="confirm-title">
+    <form method="dialog" class="confirm-box">
+      <h2 id="confirm-title">Delete this chat?</h2>
+      <p>It leaves the list and goes to the Trash. <b>You can restore it from the Trash within 3 days</b>, and after 3 days it is deleted for good. Auto record won’t bring the same chat back.</p>
+      <div class="confirm-foot"><button type="submit" value="cancel" class="secondary-button">Cancel</button><button type="submit" value="ok" class="danger-button"><span data-icon="trash"></span> Delete</button></div>
+    </form>
+  </dialog>
+  <div class="toast" id="toast" role="status" hidden></div>
+  <noscript>Please allow JavaScript in your browser to use AI Chat Drawer.</noscript>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><filter id="ch-red"><feColorMatrix type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0"/></filter><filter id="ch-cyan"><feColorMatrix type="matrix" values="0 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/></filter></svg>
+</body>
+</html>

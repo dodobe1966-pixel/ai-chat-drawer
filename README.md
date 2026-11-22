@@ -13,6 +13,10 @@ A free app that gathers your ChatGPT, Claude, Claude Code, Codex and Gemini chat
 | **Windows** 10 · 11 | [Windows 한국어판](https://github.com/dodobe1966-pixel/ai-chat-drawer/releases/download/v1.1/AI-Chat-Drawer_Windows_ko_v1.1.zip) | [Windows (English)](https://github.com/dodobe1966-pixel/ai-chat-drawer/releases/download/v1.1/AI-Chat-Drawer_Windows_en_v1.1.zip) |
 | **Mac** macOS 12+ | [Mac 한국어판](https://github.com/dodobe1966-pixel/ai-chat-drawer/releases/download/v1.1/AI-Chat-Drawer_Mac_ko_v1.1.zip) | [Mac (English)](https://github.com/dodobe1966-pixel/ai-chat-drawer/releases/download/v1.1/AI-Chat-Drawer_Mac_en_v1.1.zip) |
 
+| **iPhone · Android** | [휴대폰 앱 열기](https://dodobe1966-pixel.github.io/ai-chat-drawer/phone/) | [Open the phone app](https://dodobe1966-pixel.github.io/ai-chat-drawer/phone-en/) |
+
+휴대폰은 위 주소를 아이폰은 Safari, 안드로이드는 Chrome 으로 열고 「홈 화면에 추가」(안드로이드는 메뉴 ⋮ → 앱 설치)를 누르면 앱처럼 설치됩니다. · On phones, open the link in Safari (iPhone) or Chrome (Android) and choose Add to Home Screen / Install app.
+
 모든 판은 [Releases](https://github.com/dodobe1966-pixel/ai-chat-drawer/releases) 에 있습니다. · All versions are on the [Releases](https://github.com/dodobe1966-pixel/ai-chat-drawer/releases) page.
 
 ## 시작하기

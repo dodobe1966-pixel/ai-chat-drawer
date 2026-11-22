@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; object-src 'none'; base-uri 'none'; form-action 'self'; worker-src 'self'; manifest-src 'self'">
+  <meta name="theme-color" content="#493ac5">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="AI 대화서랍">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <title>AI 대화서랍</title>
+  <link rel="icon" type="image/png" href="assets/app-icon.png">
+  <style>
+    .brand-logo { width: 42px; height: 42px; flex: none; border-radius: 12px; object-fit: cover; box-shadow: 0 3px 8px #6b5a4040; }
+    .logo-intro { position: fixed; inset: 0; z-index: 9999; display: grid; place-content: center; justify-items: center; gap: 18px;
+      background: radial-gradient(circle at 50% 42%, #fbf7f1, #e6ddd1); cursor: pointer; transition: opacity .6s ease, visibility .6s; }
+    .logo-intro img { width: min(240px, 52vw); height: auto; border-radius: 22%; box-shadow: 0 18px 40px #6b5a4033; animation: logo-in .7s ease-out both; }
+    .logo-intro strong { color: #3b3226; font-size: 22px; font-weight: 900; letter-spacing: -.03em; animation: logo-in .7s .15s ease-out both; }
+    .logo-intro.is-done { opacity: 0; visibility: hidden; }
+    @keyframes logo-in { from { opacity: 0; transform: translateY(10px) scale(.96); } to { opacity: 1; transform: none; } }
+  </style>
+  <link rel="stylesheet" href="styles.css?v=rel10">
+  <script src="phone-tables.js?v=b1cadf0b96" defer></script>
+  <script src="phone-import.js?v=b1cadf0b96" defer></script>
+  <script src="phone-api.js?v=b1cadf0b96" defer></script>
+  <script src="phone-sync.js?v=b1cadf0b96" defer></script>
+  <script src="pwa-boot.js?v=b1cadf0b96" defer></script>
+  <script src="app.js?v=rel10" defer></script>
+</head>
+<body>
+  <div class="logo-intro" id="logo-intro" aria-hidden="true"><img src="assets/logo-motion.webp" alt=""><strong>AI 대화서랍</strong></div>
+  <script src="assets/logo-intro.js"></script>
+  <a class="skip-link" href="#records-heading">대화 목록으로 건너뛰기</a>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="보관함 메뉴">
+      <div class="brand">
+        <img class="brand-logo" src="assets/logo-motion.webp" alt="" width="42" height="42">
+        <span class="brand-name">AI 대화서랍<small>내 대화, 한곳에</small></span>
+        <button type="button" class="icon-button side-close" id="side-close" aria-label="메뉴 서랍 닫기" title="메뉴 서랍 닫기" aria-controls="sidebar"><span data-icon="drawer"></span></button>
+      </div>
+      <nav aria-label="대화 종류">
+        <p class="side-caption">보관함</p>
+        <div id="library-nav"></div>
+        <p class="side-caption">AI 서비스</p>
+        <div id="source-nav"></div>
+      </nav>
+      <div class="service-popover" id="service-popover" role="dialog" aria-label="내가 쓰는 AI" hidden></div>
+      <div class="side-projects">
+        <div class="side-caption-row"><p class="side-caption">프로젝트</p><button type="button" class="new-project-button" id="new-project"><span data-icon="plus"></span> 새 프로젝트</button></div>
+        <nav id="project-nav" aria-label="프로젝트"></nav>
+      </div>
+      <div class="side-bottom">
+        <a class="nav-item" href="guide.html" target="_blank" rel="noopener"><span data-icon="info"></span> 사용법</a>
+        <button type="button" id="backup-button" class="nav-item"><span data-icon="download"></span> 백업 내보내기</button>
+        <button type="button" class="nav-item local-note" id="open-sync"><span data-icon="shield"></span> <span id="sync-note">이 폰에만 저장</span></button>
+      </div>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar">
+        <button type="button" class="icon-button mobile-menu" id="mobile-menu" aria-label="메뉴 서랍 닫기" aria-expanded="false" aria-controls="sidebar"><span data-icon="menu"></span></button>
+        <div class="breadcrumb"><span data-icon="library"></span><span>내 보관함</span></div>
+        <div class="select-bar" id="select-bar" role="region" aria-label="선택한 대화" hidden>
+          <span class="select-count" id="select-count">0개 선택</span>
+          <button type="button" class="ghost-button" id="select-all">보이는 대화 모두</button>
+          <button type="button" class="danger-button" id="select-delete" disabled><span data-icon="trash"></span> 삭제</button>
+          <button type="button" class="ghost-button" id="select-cancel">취소</button>
+        </div>
+        <div class="top-actions">
+          <label class="search-box"><span data-icon="search"></span><input id="search" type="search" placeholder="제목, 프로젝트, 대화 내용 검색" aria-label="제목, 프로젝트, 대화 내용 검색"><kbd aria-hidden="true">Ctrl K</kbd></label>
+          <button type="button" class="secondary-button select-toggle" id="select-toggle" aria-pressed="false"><span data-icon="trash"></span> 선택 삭제</button>
+          <button type="button" class="primary-button" id="add-button"><span data-icon="plus"></span> 대화 추가</button>
+        </div>
+      </header>
+      <div class="workspace-content">
+        <section class="hero" aria-labelledby="main-title">
+          <div class="hero-art" aria-hidden="true"><i class="art-base"></i><i class="art-ghost g1"></i><i class="art-ghost g2"></i><i class="art-flow"></i><i class="art-glow"></i><i class="art-leak"></i><i class="art-scan"></i><i class="art-bar"></i></div>
+          <div class="hero-copy">
+            <h1 id="main-title" class="hero-title">AI 대화 한눈에 보기</h1>
+            <p class="hero-subtitle">ChatGPT, Claude Code, Gemini 대화를 날짜와 프로젝트로 찾아보세요.</p>
+          </div>
+          <div class="hero-actions">
+            <button type="button" class="primary-button" id="find-file"><span data-icon="upload"></span> 파일 가져오기</button>
+          </div>
+        </section>
+
+        <div class="demo-banner" id="demo-banner" hidden>
+          <span data-icon="info"></span>
+          <span><strong>예시 대화</strong> <span id="demo-text">실제 대화를 추가하면 내 기록이 표시됩니다.</span></span>
+          <button class="text-button" type="button" id="toggle-demo">예시 숨기기</button>
+        </div>
+        <div class="section-head">
+          <div><h2 id="records-heading" tabindex="-1">전체 대화</h2><span class="view-count" id="view-count" aria-live="polite"></span></div>
+          <span class="status-text" id="load-status" role="status"></span>
+        </div>
+        <div class="filters">
+          <div class="view-tabs" aria-label="대화 정리 방식">
+            <button type="button" class="view-tab is-active" data-view="date" aria-pressed="true"><span data-icon="calendar"></span> 날짜별</button>
+            <button type="button" class="view-tab" data-view="project" aria-pressed="false"><span data-icon="folder"></span> 프로젝트별</button>
+          </div>
+          <div class="filter-tools">
+            <label class="filter-date"><span data-icon="calendar"></span><span class="date-label" id="date-label">날짜 선택</span><input id="date-filter" type="date" aria-label="특정 날짜로 필터"></label>
+            <button class="icon-button" type="button" id="clear-date" aria-label="날짜 필터 지우기" title="날짜 필터 지우기" hidden><span data-icon="close"></span></button>
+            <select id="sort-order" class="filter-select" aria-label="정렬 순서">
+              <option value="new">최신순</option>
+              <option value="old">오래된순</option>
+            </select>
+          </div>
+        </div>
+        <div class="timeline" id="timeline"></div>
+        <button type="button" id="show-more" class="secondary-button" hidden>대화 더 보기</button>
+      </div>
+    </main>
+  </div>
+
+  <dialog id="intake" class="modal" aria-labelledby="intake-title">
+    <div class="modal-inner">
+      <div class="modal-head">
+        <div><h2 id="intake-title">대화 추가</h2><p id="intake-subtitle">가져올 방법을 선택하세요.</p></div>
+        <button type="button" class="icon-button" data-close="intake" aria-label="닫기"><span data-icon="close"></span></button>
+      </div>
+      <div class="modal-body" id="intake-body"></div>
+      <div class="modal-foot" id="intake-foot" hidden></div>
+    </div>
+  </dialog>
+  <dialog id="editor" class="modal" aria-labelledby="editor-title">
+    <form id="entry-form" class="modal-inner">
+      <div class="modal-head">
+        <div><h2 id="editor-title">대화 붙여넣기</h2></div>
+        <button type="button" class="icon-button" data-close="editor" aria-label="닫기"><span data-icon="close"></span></button>
+      </div>
+      <div class="modal-body">
+        <label class="field">제목<input id="entry-title" name="title" placeholder="예시. 주방 배치 검토" required maxlength="240"></label>
+        <div class="field-grid">
+          <label class="field">프로젝트<input id="entry-project" name="project" list="saved-projects" placeholder="선택하거나 새 이름 입력" maxlength="160"></label>
+          <label class="field">대화한 날짜<input id="entry-date" name="date" type="date" required></label>
+        </div>
+        <label class="field">AI 서비스<select id="entry-source" name="source"><option value="chatgpt">ChatGPT</option><option value="claude">Claude Code</option><option value="gemini">Gemini</option><option value="codex">Codex</option><option value="other">기타</option></select></label>
+        <label class="field" id="entry-transcript-field">대화 원문<textarea id="entry-transcript" name="transcript" rows="7" placeholder="AI와 나눈 대화를 복사해서 붙여넣으세요."></textarea></label>
+        <label class="field">카드 미리보기 <small>선택</small><textarea id="entry-summary" name="summary" rows="2" maxlength="600" placeholder="비워두면 대화 앞부분을 사용합니다."></textarea></label>
+        <label class="field">원본 대화 링크 <small>선택</small><input id="entry-link" name="link" type="url" placeholder="https://…"></label>
+        <div class="field">
+          <label for="entry-image">썸네일 그림 <small>선택</small></label>
+          <input id="entry-image" type="file" accept="image/png,image/jpeg,image/webp,image/gif">
+          <div class="image-edit" id="image-edit" hidden></div>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <p id="editor-status" class="status-text" role="status"></p>
+        <button type="button" class="secondary-button" data-close="editor">취소</button>
+        <button type="submit" class="primary-button">저장</button>
+      </div>
+    </form>
+  </dialog>
+  <dialog id="trash" class="modal detail-modal" aria-labelledby="trash-title">
+    <div class="modal-inner">
+      <div class="modal-head">
+        <div><h2 id="trash-title">휴지통</h2><p class="trash-note">지운 지 3일이 지나지 않은 대화만 되살릴 수 있습니다. 3일이 지나면 완전히 지워집니다.</p></div>
+        <button type="button" class="icon-button" data-close="trash" aria-label="닫기"><span data-icon="close"></span></button>
+      </div>
+      <div class="modal-body" id="trash-body"></div>
+      <div class="modal-foot" id="trash-foot"></div>
+    </div>
+  </dialog>
+  <dialog id="detail" class="modal detail-modal" aria-labelledby="detail-title">
+    <div class="modal-inner">
+      <div class="modal-head">
+        <div><div class="detail-meta" id="detail-meta"></div><h2 id="detail-title">대화 원문</h2></div>
+        <button type="button" class="icon-button" data-close="detail" aria-label="닫기"><span data-icon="close"></span></button>
+      </div>
+      <div class="modal-body" id="detail-body"></div>
+      <div class="modal-foot" id="detail-foot"></div>
+    </div>
+  </dialog>
+  <datalist id="saved-projects"></datalist>
+  <dialog id="confirm-delete" class="modal confirm-modal" aria-labelledby="confirm-title">
+    <form method="dialog" class="confirm-box">
+      <h2 id="confirm-title">대화를 지울까요?</h2>
+      <p>목록에서 사라지고 휴지통으로 갑니다. <b>3일 안에는 휴지통에서 되살릴 수 있고</b>, 3일이 지나면 완전히 지워집니다. 자동 기록이 같은 대화를 다시 불러오지는 않습니다.</p>
+      <div class="confirm-foot"><button type="submit" value="cancel" class="secondary-button">취소</button><button type="submit" value="ok" class="danger-button"><span data-icon="trash"></span> 삭제</button></div>
+    </form>
+  </dialog>
+  <div class="toast" id="toast" role="status" hidden></div>
+  <noscript>대화보관함을 이용하려면 브라우저에서 자바스크립트를 허용해 주세요.</noscript>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><filter id="ch-red"><feColorMatrix type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0"/></filter><filter id="ch-cyan"><feColorMatrix type="matrix" values="0 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/></filter></svg>
+</body>
+</html>
