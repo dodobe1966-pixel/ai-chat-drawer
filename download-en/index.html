@@ -19,6 +19,10 @@ h2{font-size:18px;margin:0 0 6px}
 .desc{color:var(--sub);font-size:14px;margin:0 0 14px}
 .sub{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;border:0;border-radius:12px;padding:14px;font-size:17px;font-weight:700;background:var(--red);color:#fff;cursor:pointer}
 .sub svg{width:22px;height:22px}
+#acts{display:grid;gap:10px}
+.sub.like{background:#fff;color:var(--red);border:2px solid var(--red)}
+.sub.done{opacity:.55}
+.sub.done::after{content:" \2713";font-weight:900}
 .ghost{display:block;margin:10px auto 0;background:none;border:0;color:var(--sub);font-size:13px;text-decoration:underline;cursor:pointer}
 .locked .row{opacity:.35;pointer-events:none;filter:grayscale(1)}
 .lockmsg{font-size:14px;color:var(--brand);margin:0 0 10px;font-weight:600}
@@ -37,15 +41,18 @@ footer a{color:var(--sub)}
 <main>
 <header><img src="../logo.png" alt=""><h1>Get AI Chat Drawer (free)</h1><p class="lead">A free app that gathers your ChatGPT, Claude and Gemini chats in one place so you can find them again by date and project.</p></header>
 <section class="card">
-<h2>1. Subscribe on YouTube</h2>
-<p class="desc">The button opens YouTube. Tap "Subscribe" there. We post a video whenever a new version comes out.</p>
-<button class="sub" id="sub"><svg viewBox="0 0 24 24" fill="#fff"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15V9l5.2 3z"/></svg>Subscribe on YouTube</button>
-<button class="ghost" id="already">I'm already subscribed</button>
+<h2>1. Subscribe and like on YouTube</h2>
+<p class="desc">Each button opens YouTube. Tap "Subscribe" on the channel and "Like" on the video. We post a video whenever a new version comes out.</p>
+<div id="acts">
+<button class="sub" id="sub"><svg viewBox="0 0 24 24" fill="#fff"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15V9l5.2 3z"/></svg>1. Subscribe to the channel</button>
+<button class="sub like" id="like"><svg viewBox="0 0 24 24" fill="#e62117"><path d="M2 21h4V9H2v12zm20-11a2 2 0 0 0-2-2h-6.3l1-4.6v-.3a1.5 1.5 0 0 0-.4-1L13.2 1 6.6 7.6A2 2 0 0 0 6 9v10a2 2 0 0 0 2 2h9a2 2 0 0 0 1.8-1.2l3-7.1c.1-.2.2-.5.2-.7v-2z"/></svg>2. Like the video</button>
+</div>
+<button class="ghost" id="already">I've already subscribed and liked</button>
 </section>
 <section class="card locked" id="dl">
 <h2>2. Download for your device</h2>
-<p class="lockmsg">Press the subscribe button above to unlock the downloads.</p>
-<p class="ok">Thanks for subscribing. Downloads are unlocked.</p>
+<p class="lockmsg">Press the subscribe and like buttons above to unlock the downloads.</p>
+<p class="ok">Thanks for subscribing and liking. Downloads are unlocked.</p>
 <div id="rows">
 <div class="row" data-os="win"><b>Windows 10 / 11</b><a href="https://github.com/dodobe1966-pixel/ai-chat-drawer/releases/download/v1.1/AI-Chat-Drawer_Windows_en_v1.1.zip">Download ZIP</a></div>
 <div class="row" data-os="mac"><b>Mac (macOS 12+)</b><a href="https://github.com/dodobe1966-pixel/ai-chat-drawer/releases/download/v1.1/AI-Chat-Drawer_Mac_en_v1.1.zip">Download ZIP</a></div>
@@ -61,7 +68,9 @@ footer a{color:var(--sub)}
   var KEY='acd-subscribed', dl=document.getElementById('dl');
   function unlock(){dl.classList.remove('locked');dl.classList.add('open');try{localStorage.setItem(KEY,'1')}catch(e){}}
   try{if(localStorage.getItem(KEY)==='1')unlock()}catch(e){}
-  document.getElementById('sub').onclick=function(){window.open('https://www.youtube.com/@aichatdrawer?sub_confirmation=1','_blank','noopener');setTimeout(unlock,1500)};
+  var did={};
+  function step(id,url){var b=document.getElementById(id);b.onclick=function(){window.open(url,'_blank','noopener');b.classList.add('done');did[id]=1;if(did.sub&&did.like)setTimeout(unlock,1500)}}
+  step('sub','https://www.youtube.com/@aichatdrawer?sub_confirmation=1');step('like','https://www.youtube.com/shorts/LjLct7jWhMY');
   document.getElementById('already').onclick=unlock;
   var ua=navigator.userAgent;
   var os=/iPhone|iPad|iPod/.test(ua)?'ios':/Android/.test(ua)?'android':/Mac/.test(ua)?'mac':/Win/.test(ua)?'win':'';
