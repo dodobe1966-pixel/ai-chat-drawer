@@ -1,9 +1,9 @@
 /* AI Chat Drawer, phone edition: keeps the app shell on the phone so it opens without a network.
  * The builder fills in the file list and a version made from the file contents. Saved chats are in IndexedDB, not here. */
 "use strict";
-const VERSION = "phone1-16e34d868df2";
+const VERSION = "phone1-1c4064f27bd1";
 const CACHE = "ai-chat-drawer-shell-" + VERSION;
-const FILES = ["./", "app.js", "assets/app-icon.png", "assets/covers/p01.webp", "assets/covers/p02.webp", "assets/covers/p03.webp", "assets/covers/p04.webp", "assets/covers/p05.webp", "assets/covers/p06.webp", "assets/covers/p07.webp", "assets/covers/p08.webp", "assets/covers/p09.webp", "assets/covers/p10.webp", "assets/covers/p11.webp", "assets/covers/p12.webp", "assets/hero-mech.webp", "assets/logo-intro.js", "assets/logo-motion.webp", "guide.html", "icons/apple-touch-icon.png", "icons/icon-192.png", "icons/icon-512.png", "icons/maskable-192.png", "icons/maskable-512.png", "index.html", "manifest.webmanifest", "phone-api.js", "phone-import.js", "phone-sync.js", "phone-tables.js", "pwa-boot.js", "styles.css"];
+const FILES = ["./", "app.js", "assets/app-icon.png", "assets/covers/p01.webp", "assets/covers/p02.webp", "assets/covers/p03.webp", "assets/covers/p04.webp", "assets/covers/p05.webp", "assets/covers/p06.webp", "assets/covers/p07.webp", "assets/covers/p08.webp", "assets/covers/p09.webp", "assets/covers/p10.webp", "assets/covers/p11.webp", "assets/covers/p12.webp", "assets/hero-mech.webp", "assets/logo-intro.js", "assets/logo-motion.webp", "guide.html", "icons/apple-touch-icon.png", "icons/icon-192.png", "icons/icon-512.png", "icons/maskable-192.png", "icons/maskable-512.png", "index.html", "manifest.webmanifest", "phone-api.js", "phone-count.js", "phone-import.js", "phone-sync.js", "phone-tables.js", "pwa-boot.js", "styles.css"];
 
 self.addEventListener("install", event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(FILES)).then(() => self.skipWaiting()));

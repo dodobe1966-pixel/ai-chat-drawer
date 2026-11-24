@@ -48,6 +48,8 @@ If you do not agree, do not install it. If you have already installed it, please
 8. Privacy
    - Chat records are stored only on the user's own PC and are never sent to the author.
    - The program does not collect personal information such as names or contact details.
+   - When the phone edition is opened from the public web address (github.io), it fetches a 1-byte file from GitHub
+     to count how many phones opened it. GitHub keeps only that file's download count; no chats, names or contacts are sent.
 
 9. Other AI services
    - ChatGPT, Claude, Gemini and similar names are trademarks of their respective companies. This program is not affiliated with those companies.
